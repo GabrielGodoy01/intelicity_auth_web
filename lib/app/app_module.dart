@@ -23,6 +23,6 @@ class AppModule extends Module {
   @override
   void routes(r) {
     r.child('/', child: (context) => const HomePage());
-    r.module('/login', module: MicroAppLoginModule(), guards: [LoginGuard()]);
+    r.module('/login', module: MicroAppLoginModule());
   }
 }

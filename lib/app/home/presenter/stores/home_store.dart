@@ -23,9 +23,13 @@ abstract class HomeStoreBase with Store {
       result.fold((l) => logger.i(l.message), (r) => null);
     }
     checkParams();
-    _authController.checkLogin().then((value) => !value
-        ? Modular.to.navigate('/login/')
-        : Modular.to.navigate('/login/logged/', arguments: user!.role));
+    _authController.checkLogin().then((value) {
+      if (!value) {
+        Modular.to.navigate('/login/');
+      } else {
+        Modular.to.navigate('/login/logged/', arguments: user!.role);
+      }
+    });
   }
 
   @observable

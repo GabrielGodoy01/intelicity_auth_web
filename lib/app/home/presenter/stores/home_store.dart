@@ -6,7 +6,7 @@ import 'package:intelicity_auth_web/app/home/domain/usecases/get_params.dart';
 import 'package:intelicity_auth_web/app/home/domain/usecases/set_params.dart';
 import 'package:logger/logger.dart';
 import 'package:mobx/mobx.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 part 'home_store.g.dart';
 
 class HomeStore = HomeStoreBase with _$HomeStore;
@@ -27,7 +27,12 @@ abstract class HomeStoreBase with Store {
       if (!value) {
         Modular.to.navigate('/login/');
       } else {
-        Modular.to.navigate('/login/logged/', arguments: user!.role);
+        Modular.to.navigate('/login/logged/', arguments: [
+          user!.role,
+          () {
+            signIn();
+          }
+        ]);
       }
     });
   }
@@ -58,9 +63,11 @@ abstract class HomeStoreBase with Store {
   }
 
   void signIn() {
-    launchUrlString(
-        '${params!.redirectUri}/#id_token=${_authController.user?.idToken}&access_token=${_authController.user?.accessToken}&refresh_token=${_authController.user?.refreshToken}&token_type=Bearer',
-        webOnlyWindowName: '_self');
+    print(params!.redirectUri);
+    var url = Uri.parse(
+      '${params!.redirectUri}/#id_token=${_authController.user?.idToken}&access_token=${_authController.user?.accessToken}&refresh_token=${_authController.user?.refreshToken}&token_type=Bearer',
+    );
+    launchUrl(url, webOnlyWindowName: '_self');
   }
 
   Future<void> signInDiffUser() async {

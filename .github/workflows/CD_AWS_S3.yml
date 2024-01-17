@@ -1,0 +1,41 @@
+name: CD_AWS_S3
+on:
+  push:
+    branches: [ dev, prod ]
+  workflow_dispatch:
+jobs:
+  build_WEB:
+      name: Build Flutter (WEB)
+      runs-on: ubuntu-latest
+      environment: ${{ github.ref_name }}
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Setup Java Version
+          uses: actions/setup-java@v1
+          with:
+            java-version: "12.x"
+
+        - name: Setup Flutter Version
+          uses: subosito/flutter-action@v1
+          with:
+            channel: "stable"
+
+        - name: Get flutter dependencies
+          run: flutter pub get
+
+        - name: Setup AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v2
+          with:
+            aws-region: sa-east-1
+            role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
+            role-session-name: github-action
+     
+        - run: npm install -g @aws-amplify/cli
+        - name: Setup Amplify projects
+          run: amplify pull --appId ${{ secrets.AMPLIFY_AUTH_APP_ID }} --envName ${{ github.ref_name }}
+        
+        - run: flutter build web --release
+
+        - name: Sync files to S3
+          run: aws s3 sync build/web/ s3://auth-web-front-${{ github.ref_name }}

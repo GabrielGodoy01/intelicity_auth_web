@@ -38,7 +38,22 @@ jobs:
      
         - run: npm install -g @aws-amplify/cli
         - name: Setup Amplify projects
-          run: mv amplify amplify_backup && amplify pull --appId ${{ secrets.AMPLIFY_AUTH_APP_ID }} --envName ${{ github.ref_name }}
+          run: |
+            CONFIG="{\
+            \"ResDir\":\"lib\"\
+            }"
+            FRONTEND="{\
+            \"frontend\":\"flutter\",\
+            \"config\":$CONFIG\
+            }"
+            AMPLIFY="{\
+            \"projectName\":\"${{ secrets.AMPLIFY_AUTH_PROJECT }}\",\
+            \"appId\":\"${{ secrets.AMPLIFY_AUTH_APP_ID }}\",\
+            \"envName\":\"${{ github.ref_name }}\",\
+            \"defaultEditor\":\"code\"\
+            }"
+        
+            amplify pull --amplify $AMPLIFY --frontend $FRONTEND --yes
         
         - run: flutter build web --release
 

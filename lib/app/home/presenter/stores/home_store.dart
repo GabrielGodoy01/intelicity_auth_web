@@ -63,7 +63,6 @@ abstract class HomeStoreBase with Store {
   }
 
   void signIn() {
-    print(params!.redirectUri);
     var url = Uri.parse(
       '${params!.redirectUri}/#id_token=${_authController.user?.idToken}&access_token=${_authController.user?.accessToken}&refresh_token=${_authController.user?.refreshToken}&token_type=Bearer',
     );

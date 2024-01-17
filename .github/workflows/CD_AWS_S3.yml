@@ -43,4 +43,4 @@ jobs:
         - run: flutter build web --release
 
         - name: Sync files to S3
-          run: aws s3 sync build/web/ s3://auth-web-front-${{ github.ref_name }}
+          run: aws s3 sync build/web/ s3://auth-web-front-${{ github.ref_name }} 

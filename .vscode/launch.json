@@ -10,7 +10,7 @@
             "type": "dart",
             "args": [
                 "--dart-define=ENV=DEV",
-                "--dart-define=MSS_BASE_URL=http://localhost:3000",
+                "--dart-define=MSS_BASE_URL=https://co2kgohi7f.execute-api.sa-east-1.amazonaws.com/prod/mss-auth",
             ]
         },
         {

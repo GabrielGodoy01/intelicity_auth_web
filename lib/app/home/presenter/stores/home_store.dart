@@ -27,7 +27,7 @@ abstract class HomeStoreBase with Store {
       if (!value) {
         Modular.to.navigate('/login/');
       } else {
-        Modular.to.navigate('/login/logged/', arguments: [
+        Modular.to.navigate('/logged/', arguments: [
           user!.role,
           () {
             signIn();
@@ -63,9 +63,9 @@ abstract class HomeStoreBase with Store {
   }
 
   void signIn() {
-    var url = Uri.parse(
-      '${params!.redirectUri}/#id_token=${_authController.user?.idToken}&access_token=${_authController.user?.accessToken}&refresh_token=${_authController.user?.refreshToken}&token_type=Bearer',
-    );
+    var uri =
+        "${params!.redirectUri}/#id_token=${_authController.user?.idToken}&access_token=${_authController.user?.accessToken}&refresh_token=${_authController.user?.refreshToken}&token_type=Bearer&email=${_authController.user?.email}&name=${_authController.user?.name}&user_id=${_authController.user?.sub}&groups=${_authController.user?.groups}";
+    var url = Uri.parse(uri);
     launchUrl(url, webOnlyWindowName: '_self');
   }
 

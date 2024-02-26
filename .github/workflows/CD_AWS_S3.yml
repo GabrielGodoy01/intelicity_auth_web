@@ -64,7 +64,7 @@ jobs:
         
             amplify pull --amplify $AMPLIFY --frontend $FRONTEND --providers $PROVIDERS --yes
         
-        - run: flutter build web --release --dart-define=ENV=${{ github.ref_name }} --dart-define=MSS_BASE_URL=https://co2kgohi7f.execute-api.sa-east-1.amazonaws.com/prod/mss-auth
+        - run: flutter build web --release --dart-define=ENV=${{ github.ref_name }} --dart-define=MSS_BASE_URL={{ secrets.MSS_BASE_URL }}
 
         - name: Sync files to S3
           run: aws s3 sync build/web/ s3://auth-web-front-${{ github.ref_name }}

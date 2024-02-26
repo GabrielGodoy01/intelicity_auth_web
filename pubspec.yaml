@@ -9,7 +9,7 @@ environment:
 dependencies:
   intelicity_auth_microapp_flutter:
     git:
-      url: https://GabrielGodoy01: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@github.com/GabrielGodoy01/intelicity_auth_microapp_flutter.git
+      url: https://GabrielGodoy01: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@github.com/GabrielGodoy01/intelicity_auth_microapp_flutter.git
       ref: dev
   flutter:
     sdk: flutter

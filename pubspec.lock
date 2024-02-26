@@ -482,8 +482,8 @@ packages:
     description:
       path: "."
       ref: dev
-      resolved-ref: f78bd9541e36980c1a4df423a905ed2e5b592250
-      url: "https://GabrielGodoy01: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@github.com/GabrielGodoy01/intelicity_auth_microapp_flutter.git"
+      resolved-ref: c149c0b8bb839cb06b815d424ef6e474a3e638ab
+      url: "https://GabrielGodoy01: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@github.com/GabrielGodoy01/intelicity_auth_microapp_flutter.git"
     source: git
     version: "1.0.0+1"
   intl:

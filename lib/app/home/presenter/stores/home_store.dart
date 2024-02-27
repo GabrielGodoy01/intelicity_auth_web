@@ -64,7 +64,7 @@ abstract class HomeStoreBase with Store {
 
   void signIn() {
     var uri =
-        "${params!.redirectUri}/#id_token=${_authController.user?.idToken}&access_token=${_authController.user?.accessToken}&refresh_token=${_authController.user?.refreshToken}&token_type=Bearer&email=${_authController.user?.email}&name=${_authController.user?.name}&user_id=${_authController.user?.sub}&groups=${_authController.user?.groups}";
+        "${params!.redirectUri}/#id_token=${_authController.user?.idToken}&access_token=${_authController.user?.accessToken}&refresh_token=${_authController.user?.refreshToken}&token_type=Bearer&email=${_authController.user?.email}&name=${_authController.user?.name}&user_id=${_authController.user?.userId}&groups=${_authController.user?.groups}";
     var url = Uri.parse(uri);
     launchUrl(url, webOnlyWindowName: '_self');
   }

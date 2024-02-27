@@ -25,7 +25,8 @@ class AppModule extends Module {
   @override
   void routes(r) {
     r.child('/', child: (context) => const HomePage());
-    r.module('/login', module: MicroAppLoginModule());
-    r.module('/logged/', module: MicroAppLoggedModule(), guards: [AuthGuard()]);
+    r.module('/login', module: MicroAppLoginModule(amplifyconfig));
+    r.module('/logged/',
+        module: MicroAppLoggedModule(amplifyconfig), guards: [AuthGuard()]);
   }
 }

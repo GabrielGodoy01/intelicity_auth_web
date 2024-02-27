@@ -482,7 +482,7 @@ packages:
     description:
       path: "."
       ref: dev
-      resolved-ref: c149c0b8bb839cb06b815d424ef6e474a3e638ab
+      resolved-ref: c08ea62cefb3edf5f6d719e78399d4346d87c3fe
       url: "https://github.com/GabrielGodoy01/intelicity_auth_microapp_flutter.git"
     source: git
     version: "1.0.0+1"
@@ -903,18 +903,18 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "9f98e2726af42967497eaef68f3373261700bbfcd33bd97da4ec85cb56fcdaf7"
+      sha256: "0db4e83b4ceef9a3c97ba5cfe087d364b5278c8154b859be8accedc1d31fc195"
       url: "https://pub.dev"
     source: hosted
-    version: "24.2.7"
+    version: "24.2.8"
   syncfusion_flutter_datagrid:
     dependency: transitive
     description:
       name: syncfusion_flutter_datagrid
-      sha256: f5b806f59426ffe3fffc8969bce969351082461b6b53e16ddbf0db2759f147df
+      sha256: "50c29c0b2fde2cd94a668e1088e14c3d11a50994cbd9653dc499b9955fc902aa"
       url: "https://pub.dev"
     source: hosted
-    version: "24.2.7"
+    version: "24.2.8"
   term_glyph:
     dependency: transitive
     description:

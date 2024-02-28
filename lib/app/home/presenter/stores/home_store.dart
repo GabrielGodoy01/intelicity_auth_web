@@ -71,6 +71,6 @@ abstract class HomeStoreBase with Store {
 
   Future<void> signInDiffUser() async {
     await _authController.signOut();
-    Modular.to.navigate('/login');
+    Modular.to.navigate('/');
   }
 }

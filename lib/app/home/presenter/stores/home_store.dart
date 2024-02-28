@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intelicity_auth_microapp_flutter/core/auth_controller.dart';
 import 'package:intelicity_auth_microapp_flutter/domain/entities/logged_user_info.dart';
+import 'package:intelicity_auth_microapp_flutter/domain/enum/role_enum.dart';
 import 'package:intelicity_auth_web/app/home/domain/entities/params.dart';
 import 'package:intelicity_auth_web/app/home/domain/usecases/get_params.dart';
 import 'package:intelicity_auth_web/app/home/domain/usecases/set_params.dart';
@@ -27,12 +28,11 @@ abstract class HomeStoreBase with Store {
       if (!value) {
         Modular.to.navigate('/login/');
       } else {
-        Modular.to.navigate('/logged/', arguments: [
-          user!.role,
-          () {
-            signIn();
-          }
-        ]);
+        _authController.user!.role == RoleEnum.USER
+            ? signIn()
+            : Modular.to.navigate('/admin/', arguments: () {
+                signIn();
+              });
       }
     });
   }

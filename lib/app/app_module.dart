@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intelicity_auth_microapp_flutter/helpers/guards/admin_guard.dart';
 import 'package:intelicity_auth_microapp_flutter/login.dart';
 import 'package:intelicity_auth_web/amplifyconfiguration.dart';
 import 'package:intelicity_auth_web/app/home/domain/repositories/uri_repository.dart';
